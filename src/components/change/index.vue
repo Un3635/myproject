@@ -1,0 +1,90 @@
+<template>
+  <div>
+    <transition-group tag="ul" class="container">
+  <li class="item" v-for="(item,index) in items" :key="item.key" :style="{background:item.color,width:'80px',height:'80px'}"
+    draggable="true"
+  @dragstart="handleDragStart($event, item)"
+    @dragover.prevent="handleDragOver($event, item)"
+    @dragenter="handleDragEnter($event, item)"
+    @dragend="handleDragEnd($event, item)" >
+    <span>{{item.text}}</span>
+  </li>
+</transition-group>
+<button @click="deleteM">删除</button>
+  </div>
+
+</template>
+<script>
+export default {
+ name: 'Toolbar',
+ data () {
+  return {
+   items: [
+    { key: 1, color: '#ffebcc', text:1},
+    { key: 2, color: '#ffb86c',text:3},
+    { key: 3, color: '#f01b2d',text:3}
+   ],
+     
+    dragging: null
+  }
+ },
+ methods:{
+   deleteM() {
+      // 删除主菜单
+     
+      this.items.splice(1, 1);
+      // if(!this.model.data) return;
+      // if( !this.isClickMenu ) {
+      //   this.mode.data.splice(this.menuIndex, 1);
+      // } else {
+      //   // 删除子菜单
+      //   let key = this.mode.props.child.key;
+      //   let submenu = this.model.data[this.menuIndex][this.label][key];
+      //   submenu.splice(this.subMenuIndex, 1);
+      // }
+       console.log(this.model);
+    },
+  handleDragStart(e,item){
+    this.dragging = item;
+  },
+  handleDragEnd(e,item){
+    this.dragging = null
+  },
+  //首先把div变成可以放置的元素，即重写dragenter/dragover
+  handleDragOver(e) {
+    e.dataTransfer.dropEffect = 'move'// e.dataTransfer.dropEffect="move";//在dragenter中针对放置目标来设置!
+  },
+  handleDragEnter(e,item){
+    e.dataTransfer.effectAllowed = "move"//为需要移动的元素设置dragstart事件
+    if(item === this.dragging){
+      return
+    }
+    const newItems = [...this.items]
+    console.log(newItems)
+    const src = newItems.indexOf(this.dragging)
+    const dst = newItems.indexOf(item)
+  
+    newItems.splice(dst, 0, ...newItems.splice(src, 1))
+  
+    this.items = newItems
+  }
+ }
+}
+
+</script>
+<style lang="css" scoped>
+  .container{
+    width: 80px;
+    height: 300px;
+    position: absolute;
+    left: 0;
+    display:flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  .item {
+   margin-top: 10px;
+   transition: all linear .3s
+  }
+
+</style>
