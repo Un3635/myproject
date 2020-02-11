@@ -119,7 +119,11 @@ export default {
   
 }
 </script>
-
+<style>
+body {
+  margin: 0px;
+}
+</style>
 <style lang="scss" scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

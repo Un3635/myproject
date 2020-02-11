@@ -12,8 +12,8 @@
     :default-active="$route.fullPath">
     <el-submenu v-for="(m, index) in menu" :key="'menu_'+index" :index="m.path">
       <template slot="title">
-        <i class="el-icon-link"></i>
-        <router-link :to="m.path" tag="span">{{m.text}}</router-link>
+        <i class="el-icon-s-goods"></i>
+        <router-link :to="m.path" tag="span" class="text">{{m.text}}</router-link>
       </template>
       <el-menu-item v-for="(mchild, index) in m.children" :key="'menuchild'+index" :index="mchild.path">
         <router-link :to="mchild.path" tag="div">{{mchild.text}}</router-link>
@@ -35,3 +35,9 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.text {
+  font-size: 20px;
+  font-weight: 700;
+}
+</style>
