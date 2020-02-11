@@ -1,3 +1,8 @@
+<!--
+ * @Description: 
+ * @Author: reiki.z
+ * @Date: 2019-12-20 16:22:35
+ -->
 <template>
   <el-menu 
     class="side-menu-wrap"
@@ -5,23 +10,26 @@
     text-color="#fff"
     active-text-color="#ffd04b"
     :default-active="$route.fullPath">
-    <el-submenu index="/HTML">
+    <el-submenu v-for="(m, index) in menu" :key="'menu_'+index" :index="m.path">
       <template slot="title">
         <i class="el-icon-link"></i>
-        <router-link to="/html" tag="span">HTML</router-link>
+        <router-link :to="m.path" tag="span">{{m.text}}</router-link>
       </template>
-      <el-menu-item index="/html/uncommon">
-       <a href="/html/uncommon">不常见</a>
-        <router-link to="/html/uncommon" tag="span">不常见</router-link>
-      </el-menu-item>
-      <el-menu-item index="/html/md">
-        <router-link to="/html/md" tag="span">htmlMd</router-link>
+      <el-menu-item v-for="(mchild, index) in m.children" :key="'menuchild'+index" :index="mchild.path">
+        <router-link :to="mchild.path" tag="div">{{mchild.text}}</router-link>
       </el-menu-item>
     </el-submenu>
   </el-menu>
 </template>
 <script>
+import { Menu } from './data.js';
+
 export default {
+  data() {
+    return {
+      menu: Menu
+    }
+  },
   created() {
     // console.log(this.$route)
   }

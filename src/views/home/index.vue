@@ -1,16 +1,18 @@
+<!--
+ * @Description: 
+ * @Author: reiki.z
+ * @Date: 2019-12-20 14:51:04
+ -->
 <template>
   <div class="home-wrap">
     <my-menu />
-     <div>
+    <router-view></router-view>
+     <!-- <div>
       <transition name="router-fade" mode="out-in">
-        <!-- <keep-alive>
-            <router-view v-if="$route.meta.keepAlive"></router-view>
-        </keep-alive> -->
+        {{$route.path}}
+        
       </transition>
-      <transition name="router-fade" mode="out-in">
-        <router-view></router-view>
-      </transition>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>

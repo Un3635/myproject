@@ -1,8 +1,14 @@
+/*
+ * @Description: 
+ * @Author: reiki.z
+ * @Date: 2019-02-25 12:23:44
+ */
 import Vue from 'vue'
 import Router from 'vue-router'
 
 import Home from '../views/home';
 import HTML from './html/index';
+import VueC from './vue/index';
 
 Vue.use(Router);
 export default new Router({
@@ -10,15 +16,16 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      redirect: '/html/md'
     },
     {
       path: '/home',
       name: 'home',
       component: Home,
       children: [
-        ...HTML
+        ...HTML,
+        ...VueC
+        
       ]
       // components: {
       //   home: Home,

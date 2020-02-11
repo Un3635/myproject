@@ -1,21 +1,18 @@
-// import Menu from '@/views/home/menu'
+/*
+ * @Description: 
+ * @Author: reiki.z
+ * @Date: 2019-12-20 15:29:10
+ */
+
 export default [
   {
-    path: '/html',
-    name: 'html',
-    component: resolve => require(['@/views/html'], resolve),
-    children: [
-      // { path: '', component:  resolve => require(['@/views/html'], resolve) },
-      {
-        path: 'uncommon',
-        name: 'uncommon',
-        component: resolve => require(['@/views/html/uncommon'], resolve),
-      },
-      {
-        path: 'md',
-        name: 'htmlMD',
-        component: resolve => require(['@/views/html/markdown'], resolve),
-      }
-    ]
-  }
+    path: '/html/md',
+    name: 'htmlMD',
+    component: resolve => require(['@/views/html/markdown'], resolve),
+  },
+  {
+    path: '/html/uncommon',
+    name: 'uncommon',
+    component: resolve => require(['@/views/html/uncommon'], resolve),
+  },
 ]
