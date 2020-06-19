@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>html中引入import</title>
+</head>
+<body>
+  <!-- script 两种加载方式 -->
+  <!-- 1. defer（延迟加载）等dom渲染完成，其他其他脚本执行完成，才会执行 -->
+  <!-- 2. async 一旦下载完成就会终止渲染，执行这个脚本之后，再继续渲染 -->
+</body>
+<!-- type="module" -->
+<!-- 加载 import 使用type module  -->
+<!-- index.js 只会被加载 执行 一次 -->
+<!--  默认不支持跨域 -->
+<script src="./es6/index.js" type="module"></script>
+<script src="./es6/index.js" type="module"></script>
+<!-- 普通js -->
+<!-- util.js 会被加载一次，但会执行两次 -->
+<script src="./es6/util.js"></script>
+<script src="./es6/util.js"></script>
+<script src="../../jQuery.3.5.js"></script>
+<script>
+  console.log('内联script')
+
+</script>
+<script src="../../jquery.lazyload.js"></script>
+</html>
